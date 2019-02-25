@@ -1,9 +1,14 @@
-const express = require("express");
+const express = require('express')
 
-const routes = express.Router();
+const routes = express.Router()
 
-routes.get("/", (req, res) => {
-  res.send("<h1>Hello Teste!!!</h1>");
-});
+const UserController = require('./app/controllers/UserController')
 
-module.exports = routes;
+routes.get('/', (req, res) => {
+  res.send('<h1>Hello Teste!!!</h1>')
+})
+
+routes.post('/users', UserController.store)
+routes.get('/users', UserController.index)
+
+module.exports = routes
